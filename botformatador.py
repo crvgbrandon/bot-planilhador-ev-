@@ -53,9 +53,11 @@ def get_google_sheet(user_id):
     # Extrair o ID da planilha a partir do link
     spreadsheet_id = sheet_link.split("/d/")[1].split("/")[0]
 
+    credenciais_path = r'C:\Users\brand\botformatador\credenciais.json'
+
     # Credenciais para acessar a Google Sheets API
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name('credenciais.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name(credenciais_path, scope)
     client = gspread.authorize(creds)
 
     # Abrir a planilha pelo ID e selecionar a aba "APOSTAS"
